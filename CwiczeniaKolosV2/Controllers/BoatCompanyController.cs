@@ -34,6 +34,11 @@ public class BoatCompanyController : ControllerBase
     {
         var res = await _boatCompanyService.AddNewReservation(newReservationDto, cancellationToken);
 
+        if (newReservationDto.NumOfBoats <= 0)
+        {
+            return BadRequest("You need to reserve at least one Boat!");
+        }
+
         if (res == -1)
         {
             return BadRequest("Client with the provided ID does not exist!");
