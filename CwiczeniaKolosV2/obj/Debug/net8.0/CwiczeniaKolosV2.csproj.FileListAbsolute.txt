@@ -135,3 +135,4 @@
 /Users/stanislawstepka/Desktop/DYSK M/UCZELNIA/4 SEM/APBD/CW KOL2 GAGO/CwiczeniaKolosV2/CwiczeniaKolosV2/obj/Debug/net8.0/CwiczeniaKolosV2.pdb
 /Users/stanislawstepka/Desktop/DYSK M/UCZELNIA/4 SEM/APBD/CW KOL2 GAGO/CwiczeniaKolosV2/CwiczeniaKolosV2/obj/Debug/net8.0/CwiczeniaKolosV2.genruntimeconfig.cache
 /Users/stanislawstepka/Desktop/DYSK M/UCZELNIA/4 SEM/APBD/CW KOL2 GAGO/CwiczeniaKolosV2/CwiczeniaKolosV2/obj/Debug/net8.0/ref/CwiczeniaKolosV2.dll
+/Users/stanislawstepka/Desktop/DYSK M/UCZELNIA/4 SEM/APBD/CW KOL2 GAGO/CwiczeniaKolosV2/CwiczeniaKolosV2/obj/Debug/net8.0/CwiczeniaKolosV2.sourcelink.json

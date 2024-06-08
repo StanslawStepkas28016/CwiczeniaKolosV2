@@ -19,4 +19,11 @@ public class BoatCompanyService : IBoatCompanyService
 
         return res;
     }
+
+    public async Task<int> AddNewReservation(NewReservationDto newReservationDto, CancellationToken cancellationToken)
+    {
+        var res = await _boatCompanyRepository.AddNewReservation(newReservationDto, cancellationToken);
+
+        return res;
+    }
 }

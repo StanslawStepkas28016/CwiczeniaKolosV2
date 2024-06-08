@@ -13,6 +13,10 @@ public class BoatCompanyContext : DbContext
 
     public virtual DbSet<BoatStandard> BoatStandards { get; set; }
 
+    public virtual DbSet<SailboatReservation> SailboatReservations { get; set; }
+
+    public virtual DbSet<Sailboat> Sailboats { get; set; }
+
     public BoatCompanyContext()
     {
     }

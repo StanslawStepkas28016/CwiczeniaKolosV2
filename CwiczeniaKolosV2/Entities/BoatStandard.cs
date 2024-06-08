@@ -9,4 +9,6 @@ public class BoatStandard
     public int Level { get; set; }
 
     public virtual ICollection<Reservation> Reservations { get; set; }
+
+    public virtual ICollection<Sailboat> Sailboats { get; set; }
 }

@@ -1,3 +1,4 @@
+/* Do pierwszej końcówki */
 INSERT INTO ClientCategory
 VALUES ('Rich', 5)
 
@@ -14,9 +15,20 @@ FROM Client
 INSERT INTO BoatStandard
 VALUES ('A-Class', 10)
 
-SELECT * FROM BoatStandard
+SELECT *
+FROM BoatStandard
 
 INSERT INTO Reservation
 VALUES (1, '2024-02-05', '2024-02-10', 1, 20, 1, 0, 2500, null)
 
-SELECT * FROM Reservation
+SELECT *
+FROM Reservation
+
+/* Do drugiej końcówki */
+INSERT INTO Sailboat
+VALUES ('Sally', 20, 'Luxurious yacht', 1, 5000);
+
+SELECT *
+FROM Sailboat
+
+SELECT * FROM Sailboat_Reservation

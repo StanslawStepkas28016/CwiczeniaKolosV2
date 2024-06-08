@@ -25,4 +25,6 @@ public class Reservation
     public decimal? Price { get; set; }
 
     public string? CancelReason { get; set; }
+
+    public virtual ICollection<SailboatReservation> SailboatReservations { get; set; }
 }

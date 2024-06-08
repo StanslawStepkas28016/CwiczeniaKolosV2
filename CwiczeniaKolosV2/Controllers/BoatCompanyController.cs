@@ -1,3 +1,4 @@
+using CwiczeniaKolosV2.ModelsDTOs;
 using CwiczeniaKolosV2.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -22,6 +23,35 @@ public class BoatCompanyController : ControllerBase
         if (res.IdClient == -1)
         {
             return NotFound("Client does not exist!");
+        }
+
+        return Ok(res);
+    }
+
+    [HttpPut("AddNewReservation")]
+    public async Task<IActionResult> AddNewReservation(NewReservationDto newReservationDto,
+        CancellationToken cancellationToken)
+    {
+        var res = await _boatCompanyService.AddNewReservation(newReservationDto, cancellationToken);
+
+        if (res == -1)
+        {
+            return BadRequest("Client with the provided ID does not exist!");
+        }
+
+        if (res == -2)
+        {
+            return BadRequest("Client already has an active reservation!");
+        }
+
+        if (res == -3)
+        {
+            return BadRequest("Not enough Boats within the given standard!");
+        }
+
+        if (res == -4)
+        {
+            return BadRequest("Transaction error!");
         }
 
         return Ok(res);

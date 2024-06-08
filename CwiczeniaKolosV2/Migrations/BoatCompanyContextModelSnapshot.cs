@@ -147,6 +147,55 @@ namespace CwiczeniaKolosV2.Migrations
                     b.ToTable("Reservation", (string)null);
                 });
 
+            modelBuilder.Entity("CwiczeniaKolosV2.Entities.Sailboat", b =>
+                {
+                    b.Property<int>("IdSailboat")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdSailboat"));
+
+                    b.Property<int>("Capacity")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("IdBoatStandard")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Price")
+                        .HasColumnType("int");
+
+                    b.HasKey("IdSailboat")
+                        .HasName("Sailboat_pk");
+
+                    b.HasIndex("IdBoatStandard");
+
+                    b.ToTable("Sailboat", (string)null);
+                });
+
+            modelBuilder.Entity("CwiczeniaKolosV2.Entities.SailboatReservation", b =>
+                {
+                    b.Property<int>("IdSailboat")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IdReservation")
+                        .HasColumnType("int");
+
+                    b.HasKey("IdSailboat", "IdReservation")
+                        .HasName("Sailboat_Reservation_pk");
+
+                    b.HasIndex("IdReservation");
+
+                    b.ToTable("Sailboat_Reservation", (string)null);
+                });
+
             modelBuilder.Entity("CwiczeniaKolosV2.Entities.Client", b =>
                 {
                     b.HasOne("CwiczeniaKolosV2.Entities.ClientCategory", "ClientCategory")
@@ -180,9 +229,44 @@ namespace CwiczeniaKolosV2.Migrations
                     b.Navigation("Client");
                 });
 
+            modelBuilder.Entity("CwiczeniaKolosV2.Entities.Sailboat", b =>
+                {
+                    b.HasOne("CwiczeniaKolosV2.Entities.BoatStandard", "BoatStandard")
+                        .WithMany("Sailboats")
+                        .HasForeignKey("IdBoatStandard")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired()
+                        .HasConstraintName("Sailboat_BoatStandard");
+
+                    b.Navigation("BoatStandard");
+                });
+
+            modelBuilder.Entity("CwiczeniaKolosV2.Entities.SailboatReservation", b =>
+                {
+                    b.HasOne("CwiczeniaKolosV2.Entities.Reservation", "Reservation")
+                        .WithMany("SailboatReservations")
+                        .HasForeignKey("IdReservation")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired()
+                        .HasConstraintName("Sailboat_Reservation_Reservation");
+
+                    b.HasOne("CwiczeniaKolosV2.Entities.Sailboat", "Sailboat")
+                        .WithMany("SailboatReservations")
+                        .HasForeignKey("IdSailboat")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired()
+                        .HasConstraintName("Sailboat_Reservation_Sailboat");
+
+                    b.Navigation("Reservation");
+
+                    b.Navigation("Sailboat");
+                });
+
             modelBuilder.Entity("CwiczeniaKolosV2.Entities.BoatStandard", b =>
                 {
                     b.Navigation("Reservations");
+
+                    b.Navigation("Sailboats");
                 });
 
             modelBuilder.Entity("CwiczeniaKolosV2.Entities.Client", b =>
@@ -193,6 +277,16 @@ namespace CwiczeniaKolosV2.Migrations
             modelBuilder.Entity("CwiczeniaKolosV2.Entities.ClientCategory", b =>
                 {
                     b.Navigation("Clients");
+                });
+
+            modelBuilder.Entity("CwiczeniaKolosV2.Entities.Reservation", b =>
+                {
+                    b.Navigation("SailboatReservations");
+                });
+
+            modelBuilder.Entity("CwiczeniaKolosV2.Entities.Sailboat", b =>
+                {
+                    b.Navigation("SailboatReservations");
                 });
 #pragma warning restore 612, 618
         }

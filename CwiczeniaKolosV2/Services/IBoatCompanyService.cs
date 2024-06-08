@@ -5,4 +5,6 @@ namespace CwiczeniaKolosV2.Services;
 public interface IBoatCompanyService
 {
     public Task<ClientReservationsDto> GetClientReservations(int idClient, CancellationToken cancellationToken);
+
+    public Task<int> AddNewReservation(NewReservationDto newReservationDto, CancellationToken cancellationToken);
 }
