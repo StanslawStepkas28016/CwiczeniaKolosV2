@@ -1,0 +1,5 @@
+dotnet new tool-manifest (instalacja dotneta w projekcie)
+dotnet tool install dotnet-ef (instalacja dotneta w projekcie 2)
+dotnet ef migrations add NAME (dodanie migracji)
+dotnet ef database update (do przeniesienia migracji na baze)
+dotnet ef migrations remove (wycofanie transakcji)
